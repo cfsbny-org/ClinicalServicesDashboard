@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "GetServicesTally";
+}
+
+@using Newtonsoft.Json
+@model ClinicalServicesDashboard.Models.TallySetupBag
+
+@{var jsonBag = JsonConvert.SerializeObject(Model);}
+
+<h2><span id="target"></span> Tally</h2>
+
+<script>
+    var bag = '@Html.Raw( jsonBag)';
+    $(init());
+
+    function init() {
+        bag = JSON.parse(bag);
+        $("#target").text(bag.Target);
+        var server = bag.TallyServicesServer;
+    }
+</script>
